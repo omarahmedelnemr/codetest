@@ -1,13 +1,10 @@
-class Classes:
+from sqldataparser import SQLDataParser
+
+class Classes(SQLDataParser):
     def __init__(self,db):
         self.db =db
 
-    def runSqlCommand(self,command):
-        cursor = self.db.cursor()
-        cursor.execute(command)
-        data = cursor.fetchall()
-        cursor.close()
-        return data
+
 
     def getAll(self):
         return self.runSqlCommand("SELECT * FROM classes")
