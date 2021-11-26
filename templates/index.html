@@ -4,7 +4,14 @@
 {% endblock %}
 
 {% block body %}
+<p>Start Data</p>
+<ol>
 
+	{% for user in data %}
+        <li>{{ user }}</li>
+    {% endfor %}
+</ol>
+<p>End Data</p>
 <table>
 	<tr>
 		<td>test</td>
@@ -20,9 +27,17 @@
 		</td>
 	</tr>
 </table>
-<form action="/" method="post">
-	<input type="text" name="content">
-	<input type="submit" name="AddTask">
+<form action="/classes/update" method="POST">
+	<input type="text" name="name">
+	<input type="number" name="grande">
+	<input type="number" name="year">
+	<input type="text" name="stage">
+	<input type="text" name="type">
+	<input type="text" name="teacher">
+	<input type="text" name="notes">
+	<input type="text" name="school">
+
+	<input type="submit" name="Done">
 </form>
 
 {% endblock %}
