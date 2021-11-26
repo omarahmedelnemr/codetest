@@ -19,68 +19,69 @@ mydb = mysql.connector.connect(
 userDataBase = User(mydb)
 classesDataBase = Classes(mydb)
 
-print(userDataBase.findById('1s5h6vduNUjSbqFRunkCkcNLStLX'))
+
+#home
+@app.route('/users')
+def home():
+    return render_template('/index.html')
+
 
 #Get All Endpoint
 @app.route('/users/getAll',methods = ['POST','GET'])
 def getAll():
-    print(userDataBase.convertToDic(userDataBase.getAll()))
-    return userDataBase.convertToDic(userDataBase.getAll())
+    print((userDataBase.getAll()))
+    return ""
+    # return userDataBase.getAll()
 
 
 
-print(userDataBase.update('omar','elnemr','omasd_as',''))
 
 #update Endpoint
 @app.route('/users/update',methods = ['POST','GET'])
 def update():
     if request.method =='POST':
         userDataBase.update(list(request.form.values()))
+    return ''
 
 #create endpoint
 @app.route('/users/create',methods=['POST','GET'])
 def create():
     if request.method == 'POST':
         userDataBase.create(tuple(request.form))
+    return ''
 
 #reset password endpoint
 @app.route('/users/resetpassword',methods=['POST','GET'])
 def resetpassword():
     if request.method == 'POST':
         userDataBase.create(request.form['id'],request.form['password'])
-
+    return ''
 # findbyid endpoint
 @app.route('/users/findbyid', methods=['POST', 'GET'])
-def create():
+def findbyid():
     if request.method == 'POST':
         userDataBase.findById(request.form['id'])
-#update endpint()
-@app.route('/users/update')
-def update():
-    if request.method == 'POST':
-        userDataBase.update(request.form.values())
-
 
 #user login  endpoint
 @app.route('/users/login')
 def login():
     if request.method == 'POST':
         userDataBase.login(request.form['email'],request.form['password'])
-
+    return ''
 #delete Endpoint
 @app.route('/users/delete',methods = ['POST','GET'])
 def delete():
     if request.method == 'POST':
         userDataBase.delete(request.form['id'])
         return 'Deleted'
-
+    return ''
 
 
 ###Classes
 
 #Get All Endpoint
 @app.route('/classes/getAll',methods = ['POST','GET'])
-def getAll():
+def classes_getAll():
     print(classesDataBase.getAll())
     return classesDataBase.getAll()
 
@@ -88,17 +89,18 @@ def getAll():
 
 #update Endpoint
 @app.route('/classes/update',methods = ['POST','GET'])
-def update():
+def classes_update():
     if request.method =='POST':
         classesDataBase.update(list(request.form.values()))
+    return ''
 #delete Endpoint
 @app.route('/classes/delete',methods = ['POST','GET'])
-def delete():
+def classes_delete():
     if request.method == 'POST':
         classesDataBase.delete(request.form['id'])
         return 'Deleted'
 
-
+    return ''
 
 if __name__ == "__main__":
     app.run(debug=True)
