@@ -1,0 +1,5 @@
+mysql_host: "mysql-58440-0.cloudclusters.net"
+mysql_port: 10669
+mysql_user:  "cloud_dev"
+mysql_password: "ep66w?WR$GfWesv4"
+mysql_db: "development"

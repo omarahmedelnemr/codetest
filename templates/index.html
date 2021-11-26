@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+
+<table>
+	<tr>
+		<td>test</td>
+		<td>added</td>
+		<td>Actions</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td>
+			<a href = ''>Delete</a>
+			<a href = ''>Update</a>
+		</td>
+	</tr>
+</table>
+<form action="/" method="post">
+	<input type="text" name="content">
+	<input type="submit" name="AddTask">
+</form>
+
+{% endblock %}
